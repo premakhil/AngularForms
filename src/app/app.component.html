@@ -1,0 +1,146 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-class">
+  <label for="firstname">First name: </label>
+<input id="firstname" type="text" formControlName="firstName">
+<div *ngIf="profileForm.get('firstName')?.hasError('required') && hasSubmitted" class="errorClass">
+  First Name is required.
+</div>
+<div *ngIf="profileForm.get('firstName')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+  Maximum length is 20 characters.
+</div>
+
+
+<label for="middlename">Middle Name: </label>
+<input id="middlename" type="text" formControlName="middleName">
+<div *ngIf="profileForm.get('middleName')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+  Maximum length is 20 characters.
+</div>  
+
+
+<label for="lastname">Last Name: </label>
+<input id="lastname" type="text" formControlName="lastName">
+<div *ngIf="profileForm.get('lastName')?.hasError('required') && hasSubmitted" class="errorClass">
+  Last Name is required.
+</div>
+<div *ngIf="profileForm.get('lastName')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+  Maximum length is 20 characters.
+</div>
+
+
+
+
+
+<label for="age">Age: </label>
+<input id="age" type="text" formControlName="age">
+<div *ngIf="profileForm.get('age')?.hasError('required') && hasSubmitted" class="errorClass">
+Age is required.
+</div>
+<div *ngIf="profileForm.get('age')?.hasError('pattern') && hasSubmitted" class="errorClass">
+  Age has to be a number. 
+</div>
+<div *ngIf="profileForm.get('age')?.hasError('max') && hasSubmitted" class="errorClass">
+  Age has to be less than 50. 
+</div>
+<div *ngIf="profileForm.get('age')?.hasError('min') && hasSubmitted" class="errorClass">
+  Age has to be greater than 10. 
+</div>
+
+
+<div class="gender-class">
+  
+  
+<label>
+  <input type="radio" name="gender" value="male">
+  Male
+</label>
+
+<label>
+  <input type="radio" name="gender" value="female" style="margin-left: 3em;">
+  Female
+</label>
+</div>
+
+
+
+<div formGroupName="addressForm" class="innerformdiv">
+
+  <label for="street">Street:</label>
+  <input type="text" id="street" formControlName="street">
+
+  <div *ngIf="profileForm.get('addressForm.street')?.hasError('required') && hasSubmitted" class="errorClass">
+    Street is required.
+  </div>
+  <div *ngIf="profileForm.get('addressForm.street')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+
+  <label for="landmark">landmark:</label>
+  <input type="text" id="landmark" formControlName="landMark">
+  <div *ngIf="profileForm.get('addressForm.landMark')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+
+
+  <label for="city">City:</label>
+  <input type="text" id="city" formControlName="city">
+  <div *ngIf="profileForm.get('addressForm.city')?.hasError('required') && hasSubmitted" class="errorClass">
+    Address is required.
+  </div>
+  <div *ngIf="profileForm.get('addressForm.city')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+
+
+
+
+
+  <label for="state">State:</label>
+  <input type="text" id="state" formControlName="state">
+  <div *ngIf="profileForm.get('addressForm.state')?.hasError('required') && hasSubmitted" class="errorClass">
+    State is required.
+  </div>
+  <div *ngIf="profileForm.get('addressForm.state')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+
+
+
+  <label for="zipCode">Zip Code:</label>
+  <input type="text" id="zipCode" formControlName="zipCode">
+  <div *ngIf="profileForm.get('addressForm.zipCode')?.hasError('required') && hasSubmitted" class="errorClass">
+    Street is required.
+  </div>
+  <div *ngIf="profileForm.get('addressForm.zipCode')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+  <div *ngIf="profileForm.get('address.zipCode')?.hasError('pattern') && hasSubmitted" class="errorClass">
+    Zip Code has to be a number. 
+  </div>
+
+  <label for="country">Country:</label>
+  <input type="text" id="country" formControlName="country">
+  <div *ngIf="profileForm.get('addressForm.country')?.hasError('required') && hasSubmitted" class="errorClass">
+    Country is required.
+  </div>
+  <div *ngIf="profileForm.get('addressForm.country')?.hasError('maxlength') && hasSubmitted" class="errorClass">
+    Maximum length is 20 characters.
+  </div>
+
+</div>
+
+<label for="hobbies">Hobbies:</label>
+<input type="text">
+<div>
+<div *ngFor="let hobby of profileForm.get('hobbies')?.value; let i = index">
+  <label for="extraHoby">Hobby {{i+1}}</label>
+  <input id="extraHoby" type="text" style="margin-top: 1em;margin-left: 1em;">
+</div>
+<button type="button" (click)="addHobby()" style="margin-top: 1em;">Add Hobby</button>
+
+</div>
+
+
+
+
+<button type="submit" class="submit-button">Submit</button>
+
+</form>

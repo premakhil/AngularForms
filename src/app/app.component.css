@@ -1,0 +1,32 @@
+.form-class {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+}
+
+label {
+    margin-top: 1em;
+}
+
+.submit-button {
+    width: 40%;
+    margin-top: 1em;
+
+   
+}
+
+input {
+    border-radius: 15px;
+    /* opacity: 30%; */
+    height: 2em;
+}
+
+.innerformdiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.errorClass {
+    color: red;
+}
